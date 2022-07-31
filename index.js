@@ -38,28 +38,42 @@ async function download(searchCode) {
 
         await driver.switchTo().window(originalWindow);
 
+       
+
         // Store the web element
         const iframe = driver.findElement(By.css('.olap-box > iframe'));
 
         // Switch to the frame
         await driver.switchTo().frame(iframe);
+       
+       
+
+
+        await driver.wait(until.elementLocated(By.xpath('//html/body/div[1]/div[2]/div/div/div/div[2]/div/div/div/div/div[2]/div[1]/div[2]/div[1]/table/tbody/tr[1]/td/div[2]/div/input[2]')), 1000000);
+        await driver.findElement(By.xpath('/html/body/div[1]/div[2]/div/div/div/div[2]/div/div/div/div/div[2]/div[1]/div[2]/div[1]/table/tbody/tr[1]/td/div[2]/div/input[2]')).click();
+       
+        await driver.wait(until.elementLocated(By.xpath("//*[contains(text(),'12월')]")), 1000000);
+        await driver.findElement(By.xpath("//*[contains(text(),'12월')]")).sendKeys(Key.ENTER);
+       
         await driver.wait(until.elementLocated(By.className('dt-btn-search')), 1000000);
         await driver.findElement(By.className('dt-btn-search')).click();
 
+       
 
         await driver.wait(until.elementLocated(By.className('m-datagrid-cell')), 1000000);
         await driver.wait(until.elementLocated(By.className('dock_title_btnarea')), 1000000);
 
 
         await driver.findElement(By.xpath('//*[@id="panel-1104-body"]/div/div[1]/div[1]/div[2]/div[1]')).click();
+        console.log(`${searchCode} success`)
+        
 
     } catch(e){
+        console.error(e.message)
         console.error(`${searchCode} fail`)
-        await driver.quit()
+        
     }finally {
-        console.log(`${searchCode} success`)
         return setTimeout(() => driver.quit(), 10000);
-
     }
 }
 
