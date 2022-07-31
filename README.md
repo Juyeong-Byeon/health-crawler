@@ -4,5 +4,7 @@
 (최적화 x 상태)
 
 ```
+npm install
 npm run download code,code,code
+//ex) npm run download 132021,132022,132019
 ```
