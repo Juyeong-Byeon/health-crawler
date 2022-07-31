@@ -1,0 +1,14 @@
+{
+  "name": "helth-crawler",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "download":"node index.js "
+  },
+  "dependencies": {
+    "chromedriver": "^103.0.0",
+    "selenium-webdriver": "^4.3.1"
+  }
+}
