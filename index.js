@@ -54,9 +54,10 @@ async function download(searchCode) {
         await driver.findElement(By.xpath('//*[@id="panel-1104-body"]/div/div[1]/div[1]/div[2]/div[1]')).click();
 
     } catch(e){
+        console.error(`${searchCode} fail`)
         await driver.quit()
     }finally {
-        console.log('quit')
+        console.log(`${searchCode} success`)
         return setTimeout(() => driver.quit(), 10000);
 
     }
